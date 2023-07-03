@@ -1,7 +1,4 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\ReturnTypeContract;
-
     require "../connection/connection.php";
 
     function createCustomer($conn, $name, $cpf, $phone, $address, $date){
