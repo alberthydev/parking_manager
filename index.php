@@ -7,9 +7,8 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Parking Manager</h1>
-    <!php 
-    
-    !>
+    <?php
+      echo "Hello, World!"
+    ?>
   </body>
 </html>
