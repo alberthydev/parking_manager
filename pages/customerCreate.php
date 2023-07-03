@@ -1,5 +1,5 @@
 <?php require "../structure/header.php";?>
-    <h1>Customers Page</h1>
+    <h1>New Customers</h1>
     <form method="post" id="form">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" class="form-field">
@@ -18,7 +18,8 @@
                 type: "POST",
                 url: "../functions/customersFunction.php",
                 data: $("#form").serialize(),
-                success: function(response) {
+                success: (response) => {
+                    console.log("Sending data");
                     console.log(response);
                 }
             });

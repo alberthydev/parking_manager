@@ -8,19 +8,18 @@
     };
 
     if(isset($_POST['name'])&&isset($_POST['cpf'])&&isset($_POST['phone'])&&isset($_POST['address'])){
-        
-        // Check if the variables have been set
-        if (empty($name)||empty($cpf)||empty($phone)||empty($address)){
-            echo "<script>alert('No data sended')</script>";
-            return 1;
-        };
-
         $name = $_POST['name'];
         $cpf = $_POST['cpf'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
         $timestamp = time();
         $date = date('Y-m-d H:i:s', $timestamp);
+
+        // Check if the variables have been set
+        if (empty($name)||empty($cpf)||empty($phone)||empty($address)){
+            echo "<script>alert('No data sended')</script>";
+            return 1;
+        };
 
         // Remove every special characters from data
         $name = preg_replace('/[áàãâä]/u', 'a', $name);
@@ -37,7 +36,7 @@
         $address = preg_replace('/[óòõôö]/u', 'o', $address);
         $address = preg_replace('/[úùûü]/u', 'u', $address);
         $address = preg_replace('/ç/u', 'c', $address);
-        $address = preg_replace('/[^a-zA-Z\s]/u', ' ', $address);
+        $address = preg_replace('/[^a-zA-Z0-9\s]/u', ' ', $address);
 
         $cpf = preg_replace('/[^0-9\s]/u', '', $cpf);
 
