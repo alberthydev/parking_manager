@@ -14,14 +14,6 @@
     $timestamp = time();
     $date = date('Y-m-d H:i:s', $timestamp);
 
-    if(isset($vehicle_id)){
-        echo "Vehicle ID: " . $vehicle_id ."\n";
-    }
-    echo "Vehicle Name: " . $desc ."\n";
-    echo "Vehicle Plate: " . $plate ."\n";
-    echo "Customer ID: " . $customer_id ."\n";
-    echo "Registrations Date: " . $date ."\n";
-
     if(isset($func)){
         if($func == "create"){
             // Call the createVehicle function to make a new register in the database
