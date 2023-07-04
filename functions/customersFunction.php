@@ -42,18 +42,15 @@
         
     if(isset($func)){
         if($func == "create"){
-            echo "Create Working";
             // Call the createCustomer function to make a new register in the database
             createCustomer($conn, $name, $cpf, $phone, $address, $date);
         }
         if($func == "edit"){
-            echo "Edit working\n";
             // Call the editCustomer function to change customer information
             editCustomer($conn, $name, $phone, $address, $date, $customer_id);
         }
         if($func == "delete"){
-            echo "Delete Working\n";
-            // Call the deleteCustomer function to delete current the customer
+            // Call the deleteCustomer function to delete the current customer
             deleteCustomer($conn, $customer_id);
         } 
     }
@@ -66,14 +63,12 @@
     };
 
     function editCustomer($conn, $name, $phone, $address, $date, $customer_id){
-        echo "I'm in edit the function\n";
         $stmt = $conn->prepare ("UPDATE customers SET Customer_Name='$name', Customer_Phone='$phone', 
         Customer_Address='$address', Customer_Registration_Date='$date' WHERE Customer_ID='$customer_id'");
         $stmt->execute();
     };
 
     function deleteCustomer($conn, $customer_id){
-        echo "I'm in delete the function\n";
         $stmt = $conn->prepare("DELETE FROM customers WHERE Customer_ID = '$customer_id'");
         $stmt->execute();
     }
