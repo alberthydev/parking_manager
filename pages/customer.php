@@ -14,9 +14,11 @@
             <th><strong>Phone</strong></th>
             <th><strong>Address</strong></th>
             <th><strong>Registration Date</strong></th>
+            <th><strong></strong></th>
         </tr>
     <?php
-        $result = $conn->query("SELECT * FROM customers");
+        $result = $conn->query("SELECT customers.Customer_ID, Customer_Name, Customer_CPF, Customer_Phone, Customer_Address, Customer_Registration_Date,
+        Vehicle_Desc FROM customers JOIN vehicles ON customers.Customer_ID = vehicles.Customer_ID;");
         while($row_customer = mysqli_fetch_assoc($result)){
             echo "<tr>";
             echo "  <td>". $row_customer['Customer_ID']. "</td>";
