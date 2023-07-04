@@ -1,7 +1,7 @@
 <?php require "../structure/header.php";?>
     <h1>New Customers</h1>
     <div id="formulario">
-        <form method="POST" id="form" onsubmit="createCustomer()">
+        <form method="POST" id="form" onsubmit="createCustomer()" action="customer.php">
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required>
             <label for="cpf">CPF:</label>

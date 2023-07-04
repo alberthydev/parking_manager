@@ -1,6 +1,8 @@
-<?php 
+<?php
+    session_start();
     require "../structure/header.php";
     include_once "../connection/connection.php";
+
 ?>
 
     <h1>Customers Page</h1>
@@ -21,8 +23,20 @@
             echo "  <td>". $row_usuario['Customer_Phone']. "</td>";
             echo "  <td>". $row_usuario['Customer_Address']. "</td>";
             echo "  <td>". $row_usuario['Customer_Registration_Date']. "</td>";
+            echo "  <td><a href='customerEdit.php?Customer_ID=" . $row_usuario['Customer_ID'] . "'>Editar</a></td>";
+            echo '  <td><a href="'.$_SERVER["PHP_SELF"].'?Customer_ID='.$row_usuario["Customer_ID"].'&del=true">Excluir</a>';
             echo "</tr>";
         }
+
+        if(isset($_GET["del"]))
+	    {
+            $del_customer_ID = $_GET["Customer_ID"];
+	    	$stmt = $conn->prepare("DELETE FROM customers WHERE Customer_ID = ?");
+	    	$stmt->bind_param('i', $del_customer_ID);
+	    	$stmt->execute();
+            echo "<script>window.location.href='customer.php';</script>";
+	    	exit;
+	    }
     ?>
     </table>
     <button><a href="customerCreate.php" style="text-decoration: none; color: black;">Create Customer</a></button>
