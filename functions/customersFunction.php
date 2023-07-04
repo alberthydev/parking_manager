@@ -48,12 +48,12 @@
         }
         if($func == "edit"){
             echo "Edit working\n";
-            // Call the editCustomer function to make a new register in the database
+            // Call the editCustomer function to change customer information
             editCustomer($conn, $name, $phone, $address, $date, $customer_id);
         }
         if($func == "delete"){
             echo "Delete Working\n";
-            // Call the createCustomer function to make a new register in the database
+            // Call the deleteCustomer function to delete current the customer
             deleteCustomer($conn, $customer_id);
         } 
     }
