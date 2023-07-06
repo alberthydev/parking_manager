@@ -3,29 +3,28 @@
     include_once "../connection/connection.php";    
 ?>
     <h1>Parking a Vehicle</h1>
-    <div id="formulario">
-        <form method="POST" id="form" onsubmit="park()" action="parking.php">
-            <table>
-                <thead>
-                    <th>#</th>
-                    <th>Parking Space</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="radio" name="parking_space" value="1">1</td>
-                        <td>Parking Space</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="parking_space" value="2">2</td>
-                        <td>Parking Space</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="parking_space" value="3">3</td>
-                        <td>Parking Space</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div>
+        <div id="parking">
+            <form onsubmit="park(customer)" action="index.php">
+                <table>
+                    <thead>
+                        <th>#</th>
+                        <th>Parking Space</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="radio" name="parking_space" value="1" required>1</td>
+                            <td>Parking Space</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="parking_space" value="2" required>2</td>
+                            <td>Parking Space</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="parking_space" value="3" required>3</td>
+                            <td>Parking Space</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table>
                     <thead>
                         <legend>Registered Vehicles</legend>
@@ -37,18 +36,26 @@
                         <?php
                             $result = $conn->query("SELECT * FROM vehicles");
                             while($row_vehicle = mysqli_fetch_assoc($result)){
-                                echo "<tr>";
-                                echo "  <td><input type='radio' name='vehicle_id' value=".$row_vehicle['Vehicle_ID'].">". $row_vehicle['Vehicle_ID']. "</td>";
+                                echo "<tr onclick=lineSelect(this)>";
+                                echo "  <input type='hidden' value=".$row_vehicle['Customer_ID']." name='customer_id'>";
+                                echo "  <td><input type='radio' name='vehicle_id' value=".$row_vehicle['Vehicle_ID']." required>". $row_vehicle['Vehicle_ID']. "</td>";
                                 echo "  <td>". $row_vehicle['Vehicle_Desc']. "</td>";
-                                echo "  <td><input type='hidden' name='customer_id' value=".$row_vehicle['Customer_ID'].">". $row_vehicle['Customer_ID']."</td>";
+                                echo "  <td>". $row_vehicle['Customer_ID']. "</td>";
                                 echo "</tr>";
                             }
                         ?>
                     </tbody>
+                    <script>
+                        let customer = null;
+
+                        function lineSelect(line){
+                            customer = line.querySelector('input[name="customer_id"]').value;
+                        }
+                    </script>
                 </table>
-            </div>
-            <button type="submit">Park the Vehicle</button>
-        </form>
-        <button><a href="parking.php" style="text-decoration: none; color: black;">Back</a></button>
+                <button type="submit">Park the Vehicle</button>
+            </form>
+        </div>
+    <button><a href="index.php" style="text-decoration: none; color: black;">Back</a></button>
     </div>
 <?php require "../structure/footer.php"?>

@@ -1,6 +1,7 @@
 <?php 
     require "../structure/header.php";    
     include_once "../connection/connection.php";
+    session_start();
 ?>
 
     <h1>Parking <?php echo $_GET['space']?></h1>
@@ -21,6 +22,6 @@
             echo "<p>Parking Space Available</p>";
         }
     ?>
-    <button><a href="parking.php" style="text-decoration: none; color: black;">Back</a></button>
+    <button><a href="index.php" style="text-decoration: none; color: black;">Back</a></button>
 
 <?php require "../structure/footer.php" ?>
