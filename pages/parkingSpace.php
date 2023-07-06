@@ -10,7 +10,7 @@
         $result = $conn->query("SELECT vehicles.Vehicle_Desc, vehicles.Vehicle_Plate, customers.Customer_Name 
         FROM parking 
         JOIN customers ON parking.Customer_ID = customers.Customer_ID 
-        JOIN vehicles ON parking.Vehicle_ID = vehicles.Vehicle_ID WHERE parking.Parked_ID = $space_id;");
+        JOIN vehicles ON parking.Vehicle_ID = vehicles.Vehicle_ID WHERE parking.Parking_Space_ID = $space_id;");
         $parking_info = mysqli_fetch_assoc($result);
 
         if(isset($parking_info['Vehicle_Desc']) && $parking_info['Vehicle_Plate'] && $parking_info['Customer_Name']){

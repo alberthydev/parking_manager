@@ -4,9 +4,11 @@
 ?>
 
     <h1>Parking</h1>
-
+    <div id="vehicles_parked">
+        <h2>Vehicles Parked</h2>
+    </div>
     <div id="parking-spaces">
-        <h2>Vehicles parked</h1>
+        <h2>Parking Spaces</h1>
         <div>
             <p><a href="parkingSpace.php?space=1" style="text-decoration: none; color: black;">Parking Space 1</a></p>
         </div>
