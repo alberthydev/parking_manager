@@ -1,5 +1,4 @@
 function park(customer){
-    console.log(customer)
     $.ajax({
         type: "POST",
         url: "../functions/parkingFunction.php",
