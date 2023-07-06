@@ -1,3 +1,20 @@
+function park(){
+    $.ajax({
+        type: "POST",
+        url: "../functions/parkingFunction.php",
+        data: $(form).serialize(),
+        success: (response) => {
+            console.log(response);
+            console.log("Sending data");
+            if(response){
+                alert("Vehicle has been Parked");
+            }else{
+                alert("Error");
+            }
+        }
+    })
+}
+
 function createCustomer() {
     $.ajax({
         type: "POST",
@@ -101,3 +118,4 @@ function deleteVehicle() {
         }
     });
 }
+

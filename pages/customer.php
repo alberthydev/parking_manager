@@ -9,16 +9,16 @@
     <table>
         <tr>
             <th><strong>#</strong></th>
-            <th><strong>Nome</strong></th>
+            <th><strong>Name</strong></th>
             <th><strong>CPF</strong></th>
             <th><strong>Phone</strong></th>
             <th><strong>Address</strong></th>
             <th><strong>Registration Date</strong></th>
-            <th><strong></strong></th>
+            <th><strong>Vehicle</strong></th>
         </tr>
     <?php
         $result = $conn->query("SELECT customers.Customer_ID, Customer_Name, Customer_CPF, Customer_Phone, Customer_Address, Customer_Registration_Date,
-        Vehicle_Desc FROM customers JOIN vehicles ON customers.Customer_ID = vehicles.Customer_ID;");
+        Vehicle_Desc FROM customers LEFT JOIN vehicles ON customers.Customer_ID = vehicles.Customer_ID;");
         while($row_customer = mysqli_fetch_assoc($result)){
             echo "<tr>";
             echo "  <td>". $row_customer['Customer_ID']. "</td>";
@@ -27,6 +27,11 @@
             echo "  <td>". $row_customer['Customer_Phone']. "</td>";
             echo "  <td>". $row_customer['Customer_Address']. "</td>";
             echo "  <td>". $row_customer['Customer_Registration_Date']. "</td>";
+            if(isset($row_customer['Vehicle_Desc'])){
+                echo "  <td>". $row_customer['Vehicle_Desc']. "</td>";
+            }else{
+                echo "  <td>No Cars Found</td>";
+            }
             echo "  <td><button><a href='customerEdit.php?Customer_ID=" . $row_customer['Customer_ID'] . 
                             "' style='text-decoration: none; color: black;'>Editar</a></button></td>";
             echo '  <td><button><a href="'.$_SERVER["PHP_SELF"].'?Customer_ID='.$row_customer["Customer_ID"].

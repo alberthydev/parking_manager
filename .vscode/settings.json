@@ -9,22 +9,9 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MariaDB",
-            "name": "Serviços",
-            "username": "albert",
-            "database": "pessoal"
-        },
-        {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MariaDB",
-            "name": "Admin",
-            "database": "pessoal",
-            "username": "admin"
+            "name": "Projects",
+            "database": "projects",
+            "username": "albert"
         }
     ]
 }
