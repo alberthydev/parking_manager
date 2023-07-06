@@ -54,6 +54,7 @@
     </div>
 
     <button><a href="parkingCreate.php" style="text-decoration: none; color: black;">Park a car</a></button>
+    <button><a href="index.php" style="text-decoration: none; color: black;">Back</a></button>
 <?php
     require "../structure/footer.php"
 ?>

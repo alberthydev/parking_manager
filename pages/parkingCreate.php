@@ -4,7 +4,7 @@
 ?>
     <h1>Parking a Vehicle</h1>
     <div id="formulario">
-        <form method="POST" id="form" onsubmit="park()" action="">
+        <form method="POST" id="form" onsubmit="park()" action="parking.php">
             <table>
                 <thead>
                     <th>#</th>
