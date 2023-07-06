@@ -31,6 +31,7 @@
                         <legend>Registered Vehicles</legend>
                         <th>#</th>
                         <th>Vehicle</th>
+                        <th>Customer</th>
                     </thead>
                     <tbody>
                         <?php
@@ -38,8 +39,8 @@
                             while($row_vehicle = mysqli_fetch_assoc($result)){
                                 echo "<tr>";
                                 echo "  <td><input type='radio' name='vehicle_id' value=".$row_vehicle['Vehicle_ID'].">". $row_vehicle['Vehicle_ID']. "</td>";
-                                echo "      <input type='hidden' name='customer_id' value=".$row_vehicle['Customer_ID'].">";
                                 echo "  <td>". $row_vehicle['Vehicle_Desc']. "</td>";
+                                echo "  <td><input type='hidden' name='customer_id' value=".$row_vehicle['Customer_ID'].">". $row_vehicle['Customer_ID']."</td>";
                                 echo "</tr>";
                             }
                         ?>
