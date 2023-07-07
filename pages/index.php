@@ -68,9 +68,9 @@
     <h2>Parking Spaces</h2>
     <div class="grid-container"></div>
     <script>
-        const n = 9; // número de itens
+        const parkingSpacesTotal = 9; // número de itens
         const container = document.querySelector('.grid-container');
-        for (let i = 1; i <= n; i++) {
+        for (let i = 1; i <= parkingSpacesTotal; i++) {
             const item = document.createElement('div');
             item.classList.add('grid-item');
             item.textContent = i;
