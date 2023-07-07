@@ -2,7 +2,19 @@
     require "../structure/header.php";
     include_once "../connection/connection.php"
 ?>
-
+<style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      padding: 2vh 5vw;
+    }
+    .grid-item {
+      background-color: #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+</style>
 <h1>Parking Manager</h1>
     <button><a href="customer.php" style="text-decoration: none; color: black;">Customers</a></button>
     <button><a href="vehicle.php" style="text-decoration: none; color: black;">Vehicles</a></button>
@@ -53,20 +65,7 @@
             </script>
         </table>
     </div>
-    <div id="parking-spaces">
-    <style>
-          .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 10px;
-            padding: 2vh 5vw;
-          }
-          .grid-item {
-            background-color: #ddd;
-            padding: 10px;
-            text-align: center;
-          }
-    </style>
+    <h2>Parking Spaces</h2>
     <div class="grid-container"></div>
     <script>
         const n = 9; // número de itens
@@ -82,7 +81,6 @@
         }
     </script>
     </div>
-
     <button><a href="parkingCreate.php" style="text-decoration: none; color: black;">Park a car</a></button>
 <?php
     require "../structure/footer.php"
