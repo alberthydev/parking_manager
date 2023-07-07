@@ -18,7 +18,8 @@
         </tr>
     <?php
         $result = $conn->query("SELECT customers.Customer_ID, Customer_Name, Customer_CPF, Customer_Phone, Customer_Address, Customer_Registration_Date,
-        Vehicle_Desc FROM customers LEFT JOIN vehicles ON customers.Customer_ID = vehicles.Customer_ID;");
+        Vehicle_Desc FROM customers LEFT JOIN vehicles ON customers.Customer_ID = vehicles.Customer_ID
+        ORDER BY customers.Customer_ID ASC;");
         while($row_customer = mysqli_fetch_assoc($result)){
             echo "<tr>";
             echo "  <td>". $row_customer['Customer_ID']. "</td>";

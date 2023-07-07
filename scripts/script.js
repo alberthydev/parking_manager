@@ -1,13 +1,41 @@
-function park(customer){
+function park(customer, space){
+    if (space != null) {
+        $.ajax({
+            type: "POST",
+            url: "../functions/parkingFunction.php",
+            data: $('form').serialize() + "&customer_id="+customer+"&parking_space="+space+"&func=park",
+            success: (response) => {
+                console.log(response);
+                console.log("Sending data");
+                if(response){
+                    alert("Vehicle has been Parked");
+                    window.location.href = "index.php";
+                }else{
+                    alert("Error");
+                }
+            }
+        })
+      } else {
+        alert("Choose a parking space please");
+        window.location.href = "parkingCreate.php";
+      }      
+    
+}
+
+function payParking(vehicle){
     $.ajax({
         type: "POST",
         url: "../functions/parkingFunction.php",
-        data: $('form').serialize() + "&customer_id="+customer,
+        data: {
+            vehicle_id: vehicle,
+            func: "pay"
+        },
         success: (response) => {
             console.log(response);
             console.log("Sending data");
             if(response){
-                alert("Vehicle has been Parked");
+                alert("Vehicle has been paid");
+                window.location.href="index.php";
             }else{
                 alert("Error");
             }

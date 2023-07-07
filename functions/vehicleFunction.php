@@ -37,13 +37,20 @@
     };
 
     function editVehicle($conn, $desc, $plate, $date, $customer_id, $vehicle_id){
-        $stmt = $conn->prepare ("UPDATE vehicles SET Vehicle_Desc='$desc', Vehicle_Plate='$plate', 
-        Vehicle_Registration_Date='$date', Customer_ID='$customer_id' WHERE Vehicle_ID='$vehicle_id'");
+        $stmt = $conn->prepare ("UPDATE vehicles SET Vehicle_Desc=?, Vehicle_Plate=?, 
+        Vehicle_Registration_Date=?, Customer_ID=? WHERE Vehicle_ID=?");
+        $stmt->bind_param("sssii", $desc, $plate, $date, $customer_id, $vehicle_id);
+        $stmt->execute();   
+        
+        $stmt = $conn->prepare("UPDATE parking SET Customer_ID=? WHERE Vehicle_ID=? 
+        AND (Parking_Departure_Date IS NULL)");
+        $stmt->bind_param("ii", $customer_id, $vehicle_id);
         $stmt->execute();
     };
 
     function deleteVehicle($conn, $vehicle_id){
-        $stmt = $conn->prepare("DELETE FROM vehicles WHERE Vehicle_ID = '$vehicle_id'");
+        $stmt = $conn->prepare("DELETE FROM vehicles WHERE Vehicle_ID = ?");
+        $stmt->bind_param("?", $vehicle_id);
         $stmt->execute();
     }
 ?>

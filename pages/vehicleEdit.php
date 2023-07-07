@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $resultC = $conn->query("SELECT * FROM customers");
+                            $resultC = $conn->query("SELECT * FROM customers ORDER BY Customer_ID ASC;");
                             while($row_customer = mysqli_fetch_assoc($resultC)){
                                 echo "<tr>";
                                 if($row_customer['Customer_ID']==$row_vehicle['Customer_ID']){

@@ -16,7 +16,8 @@
         <tbody>
             <?php
             $result = $conn->query("SELECT Vehicle_ID, Vehicle_Desc, Vehicle_Plate, Vehicle_Registration_Date, Customer_Name
-            FROM vehicles JOIN customers ON vehicles.Customer_ID = customers.Customer_ID;");
+            FROM vehicles JOIN customers ON vehicles.Customer_ID = customers.Customer_ID
+            ORDER BY vehicles.Vehicle_ID ASC;;");
             while($row_vehicle = mysqli_fetch_assoc($result)){
                 echo "<tr>";
                 echo "  <td>". $row_vehicle['Vehicle_ID']. "</td>";

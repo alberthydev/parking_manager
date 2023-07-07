@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $result = $conn->query("SELECT * FROM customers");
+                            $result = $conn->query("SELECT * FROM customers ORDER BY Customer_ID ASC;");
                             while($row_customer = mysqli_fetch_assoc($result)){
                                 echo "<tr>";
                                 echo "  <td><input type='radio' name='customer_id' value=".$row_customer['Customer_ID']." required>". $row_customer['Customer_ID']. "</td>";
