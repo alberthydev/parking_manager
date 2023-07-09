@@ -16,9 +16,9 @@
             <input type="text" id="phone" name="phone" required value="<?php echo $row_customer['Customer_Phone'];?>">
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required value="<?php echo $row_customer['Customer_Address'];?>"> 
-            <button type="submit">Save Customer</button>
+            <button type="submit" class="button-system">Save Customer</button>
         </form>
-        <button onclick="deleteCustomer()">Delete</button>
-        <button><a href="customer.php" style="text-decoration: none; color: black;">Back</a></button>
+        <button onclick="deleteCustomer()" class="button-delete">Delete</button>
+        <button class="button-system"><a href="customer.php" style="text-decoration: none; color: black;">Back</a></button>
     </div>
 <?php require "../structure/footer.php"?>

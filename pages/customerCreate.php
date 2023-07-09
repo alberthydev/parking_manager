@@ -10,8 +10,8 @@
             <input type="text" id="phone" name="phone" required>
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required> 
-            <button type="submit">Create Customer</button>
+            <button class="button-system" type="submit">Create Customer</button>
         </form>
-        <button><a href="customer.php" style="text-decoration: none; color: black;">Back</a></button>
+        <button class="button-system"><a href="customer.php" style="text-decoration: none; color: black;">Back</a></button>
     </div>
 <?php require "../structure/footer.php"?>
