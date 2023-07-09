@@ -15,37 +15,52 @@
             <label for="plate">Placa:</label>
             <input type="text" id="plate" name="plate" required value="<?php echo $row_vehicle['Vehicle_Plate']?>">
             <div>
-                <table>
-                    <thead>
-                        <legend>Registered Customers</legend>
-                        <th>#</th>
-                        <th>Customer</th>
-                    </thead>
-                    <tbody>
-                        <?php
-                            $resultC = $conn->query("SELECT * FROM customers ORDER BY Customer_ID ASC;");
-                            while($row_customer = mysqli_fetch_assoc($resultC)){
-                                echo "<tr>";
-                                if($row_customer['Customer_ID']==$row_vehicle['Customer_ID']){
-                                    echo "  <td><input type='radio' checked name='customer_id' value=".$row_customer['Customer_ID']
-                                    ." required>". $row_customer['Customer_ID']. "</td>";
+                <div class="tbl-header">
+                    <table>
+                        <thead>
+                            <th>#</th>
+                            <th>Customer</th>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tbl-content">
+                    <table>
+                        <tbody>
+                            <?php
+                                $result = $conn->query("SELECT * FROM customers ORDER BY Customer_ID ASC;");
+                                $num_rows = mysqli_num_rows($result);
+                                if($num_rows>0){
+                                    while($row_customer = mysqli_fetch_assoc($result)){
+                                        echo "<tr>";
+                                        if($row_customer['Customer_ID']==$row_vehicle['Customer_ID']){
+                                            echo "  <td><input type='radio' checked name='customer_id' value=".$row_customer['Customer_ID']
+                                            ." required>". $row_customer['Customer_ID']. "</td>";
+                                        }else{
+                                            echo "  <td><input type='radio' name='customer_id' value=".$row_customer['Customer_ID']
+                                            ." required></td>";
+                                        }
+                                        echo "  <td>". $row_customer['Customer_Name']. "</td>";
+                                        echo "</tr>";
+                                    }
                                 }else{
-                                    echo "  <td><input type='radio' name='customer_id' value=".$row_customer['Customer_ID']
-                                    ." required>". $row_customer['Customer_ID']. "</td>";
+                                    echo "<tr><td>No customers registred</td></tr>";
                                 }
-                                echo "  <td>". $row_customer['Customer_Name']. "</td>";
-                                echo "  <td><button><a href='customerEdit.php?Customer_ID=" . $row_customer['Customer_ID'] . 
-                                "' style='text-decoration: none; color: black;'>Editar</a></button></td>";
-                                echo "</tr>";
-                            }
-                        ?>
-                    </tbody>
-                </table>
-                <button><a href="customerCreate.php" style="text-decoration: none; color: black;">Add</a></button>
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <button type="submit">Save Vehicle</button>
+            <button type="submit" class="button-system">Save Vehicle</button>
         </form>
-        <button onclick="deleteVehicle()">Delete</button>
-        <button><a href="vehicle.php" style="text-decoration: none; color: black;">Back</a></button>
+        <script>
+            let numRowsTable = <?php echo $num_rows;?>;
+            if(numRowsTable>=4){
+                table.classList.add('fixo');
+            }else{
+                table.classList.remove('fixo');
+            }
+        </script>
+        <button onclick="deleteVehicle()" class="button-delete">Delete</button>
+        <button class="button-system"><a href="vehicle.php" style="text-decoration: none; color: black;">Back</a></button>
     </div>
 <?php require "../structure/footer.php"?>

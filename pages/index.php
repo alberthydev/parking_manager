@@ -3,15 +3,17 @@
     include_once "../connection/connection.php"
 ?>
     <nav class="nav-menu">
-        <h1>PM</h1>
-        <button class="button-system"><a href="customer.php">Customers</a></button>
-        <button class="button-system"><a href="vehicle.php"">Vehicles</a></button>
+        <img src="../img/logo.png" alt="logo PM - Parking Manager" class="logo">
+        <div class="nav-buttons">
+            <button class="button-system"><a href="customer.php">Customers</a></button>
+            <button class="button-system"><a href="vehicle.php"">Vehicles</a></button>
+        </div>
     </nav>
     <div class="vehicles-parked">
-        <div>
+        <div class="vp-structure">
             <h1>Vehicles Parked</h1>
         </div>
-        <div class="vehicles-table">
+        <div class="index-vehicle-table">
             <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                     <thead>
@@ -40,7 +42,7 @@
                 <table cellpadding="0" cellspacing="0" border="0">
                     <tbody> 
                         <?php
-                            if(mysqli_num_rows($result)>0){
+                            if($num_rows>0){
                                 while ($row_parked = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                     echo "  <td>".$row_parked['Parked_ID']."</td>";
@@ -66,28 +68,32 @@
                 </table>
             </div>
         </div>
-        <script>
-            let vehicle = null;
-
-            let table = document.querySelector('.tbl-content');
-            let numRowsTable = <?php echo $num_rows;?>;
-            if(numRowsTable>=4){
-                table.classList.add('fixo');
-            }else{
-                table.classList.remove('fixo');
-            }
-
-            function lineSelect(line){
-                vehicle = line.querySelector('input[name="vehicle_id"]').value;
-                payParking(vehicle);
-            }
-        </script>
     </div>    
-    <h2>Parking Spaces</h2>
-    <div class="grid-container"></div>
+    <div class="vehicles-parked">
+        <div>
+            <div class="grid-container"></div>
+        </div>
+        <div class="vp-structure">
+            <h1>Parking Spaces</h1>
+        </div>
+    </div>
     <script>
-        const parkingSpacesTotal = 9; // número de itens
+        const parkingSpacesTotal = 10; // número de itens
         const container = document.querySelector('.grid-container');
+        let vehicle = null;
+        let table = document.querySelector('.tbl-content');
+        let numRowsTable = <?php echo $num_rows;?>;
+        if(numRowsTable>=4){
+            table.classList.add('fixo');
+        }else{
+            table.classList.remove('fixo');
+        }
+
+        function lineSelect(line){
+            vehicle = line.querySelector('input[name="vehicle_id"]').value;
+            payParking(vehicle);
+        }
+
         for (let i = 1; i <= parkingSpacesTotal; i++) {
             const item = document.createElement('div');
             item.classList.add('grid-item');
@@ -99,7 +105,7 @@
         }
     </script>
     </div>
-    <button class="button-system"><a href="parkingCreate.php"">Park a car</a></button>
+    <button class="button-system park-button"><a href="parkingCreate.php"">Park a car</a></button>
 <?php
     require "../structure/footer.php"
 ?>

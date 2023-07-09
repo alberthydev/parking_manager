@@ -10,11 +10,45 @@ $bt-color-system: #fffc31;
 $table: #d6d6d6;
 
 .nav-menu{
+  background-color: #001d3d;
   display: flex;
+  justify-content: space-around;
+}
+
+.logo{
+  margin-left: auto;
+  margin-right: 50%;
+}
+
+.nav-buttons{
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.nav-buttons button{
+  margin-left: 3vw;
 }
 
 .vehicles-parked{
   display: flex;
+  align-content: center2;
+  padding: 5vh 3vw;
+  justify-content: space-around;
+}
+
+.vp-structure{
+  border-radius: 1.5rem;
+  background-color: #fdf8e1;
+  padding: 5%;
+}
+
+.vp-structure h1{
+  text-align: center;
+}
+
+.index-vehicle-table{
+  margin: 0 15px;
 }
 
 .button-delete{
@@ -55,10 +89,14 @@ $table: #d6d6d6;
   }
 }
 
+img{
+  width: 7vw;
+  height: auto;
+}
+
 button{
   cursor: pointer;
   border: none;
-  display: inline-block;
   display: inline-block;
   padding: .75rem 1.25rem;
   border-radius: 10rem;
@@ -104,7 +142,7 @@ a{
 
 h2 {
   font-size: 2rem;
-  color: $table;
+  color: #000814;
 }
 
 table{
@@ -114,16 +152,16 @@ table{
 
 .tbl-header{
   background-color: rgba(255,255,255,0.3);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
  }
 .tbl-content{
   overflow-x:auto;
   margin-top: 0px;
   border: 1px solid $table;
   background-color: #fdf8e1;
-}
-
-.vehicles-table{
-  margin: 50px;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 
 .fixo{
@@ -149,9 +187,6 @@ td{
   border-left: solid 1px $table;
 }
 
-
-/* demo styles */
-
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 body{
   font-family: 'Roboto', sans-serif;
@@ -175,13 +210,26 @@ section{
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
-  padding: 2vh 5vw;
+  padding: 0;
 }
 .grid-item {
   background-color: #ddd;
-  padding: 10px;
+  padding: 5vh 5.6vw;
   text-align: center;
+  border-radius: 1rem;
+  
 }
 
+.park-button{
+  margin: 4vh 3vw;
+  margin-bottom: 10vh;
+}
+
+footer{
+  color: #d6d6d6;
+  background-color: #001d3d;
+  text-align: center;
+  padding: 5vh 0;
+}

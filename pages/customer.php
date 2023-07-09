@@ -21,31 +21,36 @@
         </tr>
     </table>
 </div>
-    <div id="tbl-content-fixo" class="tbl-content fixo">
+    <div id="tbl-content-fixo" class="tbl-content">
         <table>
             <tbody>
                 <?php
                 $result = $conn->query("SELECT customers.Customer_ID, Customer_Name, Customer_CPF, Customer_Phone, Customer_Address, Customer_Registration_Date,
                 Vehicle_Desc FROM customers LEFT JOIN vehicles ON customers.Customer_ID = vehicles.Customer_ID
                 ORDER BY customers.Customer_ID ASC;");
-                while($row_customer = mysqli_fetch_assoc($result)){
-                    echo "<tr>";
-                    echo "  <td>". $row_customer['Customer_ID']. "</td>";
-                    echo "  <td>". $row_customer['Customer_Name']. "</td>";
-                    echo "  <td>". $row_customer['Customer_CPF']. "</td>";
-                    echo "  <td>". $row_customer['Customer_Phone']. "</td>";
-                    echo "  <td>". $row_customer['Customer_Address']. "</td>";
-                    echo "  <td>". $row_customer['Customer_Registration_Date']. "</td>";
-                    if(isset($row_customer['Vehicle_Desc'])){
-                        echo "  <td>". $row_customer['Vehicle_Desc']. "</td>";
-                    }else{
-                        echo "  <td>No Cars Found</td>";
+                $num_rows = mysqli_num_rows($result);
+                if($num_rows>0){
+                    while($row_customer = mysqli_fetch_assoc($result)){
+                        echo "<tr>";
+                        echo "  <td>". $row_customer['Customer_ID']. "</td>";
+                        echo "  <td>". $row_customer['Customer_Name']. "</td>";
+                        echo "  <td>". $row_customer['Customer_CPF']. "</td>";
+                        echo "  <td>". $row_customer['Customer_Phone']. "</td>";
+                        echo "  <td>". $row_customer['Customer_Address']. "</td>";
+                        echo "  <td>". $row_customer['Customer_Registration_Date']. "</td>";
+                        if(isset($row_customer['Vehicle_Desc'])){
+                            echo "  <td>". $row_customer['Vehicle_Desc']. "</td>";
+                        }else{
+                            echo "  <td>No Cars Found</td>";
+                        }
+                        echo "  <td><button class='button-pay'><a href='customerEdit.php?Customer_ID=" . $row_customer['Customer_ID'] . 
+                                        "' style='text-decoration: none; color: black;'>Editar</a></button></td>";
+                        echo '  <td><button class="button-delete"><a href="'.$_SERVER["PHP_SELF"].'?Customer_ID='.$row_customer["Customer_ID"].
+                        '&del=true" style="text-decoration: none; color: black;">Excluir</a></button></td>';
+                        echo "</tr>";
                     }
-                    echo "  <td><button class='button-pay'><a href='customerEdit.php?Customer_ID=" . $row_customer['Customer_ID'] . 
-                                    "' style='text-decoration: none; color: black;'>Editar</a></button></td>";
-                    echo '  <td><button class="button-delete"><a href="'.$_SERVER["PHP_SELF"].'?Customer_ID='.$row_customer["Customer_ID"].
-                    '&del=true" style="text-decoration: none; color: black;">Excluir</a></button></td>';
-                    echo "</tr>";
+                }else{
+                    echo "<tr><td>No customers registred</td></tr>";
                 }
 
                 if(isset($_GET["del"]))
