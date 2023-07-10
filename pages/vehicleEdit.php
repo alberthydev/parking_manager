@@ -6,7 +6,18 @@
     $resultV = $conn->query("SELECT * FROM vehicles WHERE Vehicle_ID = '$Vehicle_ID'");
     $row_vehicle = mysqli_fetch_assoc($resultV);
 ?>
-    <h1>Edit <?php echo $row_vehicle['Vehicle_Desc']?></h1>
+<nav class="nav-menu">
+    <img src="../img/logo.png" alt="logo PM - Parking Manager" class="logo">
+    <div class="nav-buttons">
+        <button class="button-system"><a href="vehicle.php" style="text-decoration: none; color: black;">Back</a></button>
+    </div>
+</nav>
+<div class="create-edit-structure">
+    <div>
+        <div class="create-edit-text-structure">
+            <h1>Edit <?php echo $row_vehicle['Vehicle_Desc']?></h1>
+        </div>
+    </div>
     <div id="formulario">
         <form method="POST" id="form" onsubmit="editVehicle()" action="vehicle.php">
             <input type="hidden" id="id" name="id" value="<?php echo $row_vehicle['Vehicle_ID']; ?>">
@@ -34,7 +45,7 @@
                                         echo "<tr>";
                                         if($row_customer['Customer_ID']==$row_vehicle['Customer_ID']){
                                             echo "  <td><input type='radio' checked name='customer_id' value=".$row_customer['Customer_ID']
-                                            ." required>". $row_customer['Customer_ID']. "</td>";
+                                            ." required></td>";
                                         }else{
                                             echo "  <td><input type='radio' name='customer_id' value=".$row_customer['Customer_ID']
                                             ." required></td>";
@@ -51,16 +62,18 @@
                 </div>
             </div>
             <button type="submit" class="button-system">Save Vehicle</button>
+            <button onclick="deleteVehicle()" class="button-delete">Delete</button>
         </form>
-        <script>
-            let numRowsTable = <?php echo $num_rows;?>;
-            if(numRowsTable>=4){
-                table.classList.add('fixo');
-            }else{
-                table.classList.remove('fixo');
-            }
-        </script>
-        <button onclick="deleteVehicle()" class="button-delete">Delete</button>
-        <button class="button-system"><a href="vehicle.php" style="text-decoration: none; color: black;">Back</a></button>
     </div>
+</div>
+<script>
+    // Seleciona todos os elementos com a classe "customer-name"
+    let table = document.querySelector('.tbl-content');
+    let numRowsTable = <?php echo $num_rows;?>;
+    if(numRowsTable>=4){
+        table.classList.add('fixo');
+    }else{
+        table.classList.remove('fixo');
+    }
+</script>
 <?php require "../structure/footer.php"?>

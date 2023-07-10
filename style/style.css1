@@ -33,7 +33,7 @@
   justify-content: space-around;
 }
 
-.information {
+.customers {
   display: flex;
   align-content: center;
   padding: 7vh 3vw 0 3vw;
@@ -49,7 +49,7 @@
   align-items: center;
 }
 
-.info-structure {
+.cust-structure {
   border-radius: 1.5rem;
   background-color: #fdf8e1;
   padding: 5vw;
@@ -62,7 +62,7 @@
   text-align: center;
 }
 
-.info-structure h1 {
+.cust-structure h1 {
   text-align: center;
 }
 
@@ -154,13 +154,9 @@ button:hover:before {
   width: 100%;
 }
 
-button a {
-  color: #000814;
-}
-
 a {
   text-decoration: none;
-  color: #d6d6d6;
+  color: #000814;
 }
 
 h2 {
@@ -205,18 +201,18 @@ th {
   font-size: 0.9rem;
 }
 
-.info-bt {
+.cust-bt {
   padding: 0.75rem 0.5rem;
   border-radius: 10px;
   color: #d6d6d6;
 }
-.info-bt:after {
+.cust-bt:after {
   border-radius: 4px;
 }
-.info-bt:before {
+.cust-bt:before {
   border-radius: 4px;
 }
-.info-bt:hover {
+.cust-bt:hover {
   color: #d6d6d6;
 }
 
@@ -233,34 +229,17 @@ td {
 
 #form {
   display: flex;
+  padding: 0 5vw;
   flex-direction: column;
-  align-content: center;
-  height: 100%;
-  width: 45vw;
 }
 
 #form label {
-  color: #d6d6d6;
   margin-bottom: 0.5rem;
 }
 
 #form input {
   padding: 0.5rem;
   margin-bottom: 1rem;
-}
-
-#form button {
-  margin-top: 2vh;
-}
-
-.create-edit-text-structure {
-  border-radius: 1.5rem;
-  background-color: #fdf8e1;
-  padding: 5vw;
-  height: 65vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .create-edit-structure {
@@ -270,11 +249,11 @@ td {
   padding: 5vh 10vw;
 }
 
-.information {
+.customers {
   padding: 15vh 2.5vw;
 }
 
-.info-button {
+.customer-button {
   font-weight: 600;
   padding: 8% 20%;
   margin-top: 2vh;
@@ -401,33 +380,6 @@ body {
   border-radius: 1rem;
 }
 
-#delete-parking {
-  color: #fff;
-}
-
-.parking {
-  display: flex;
-  align-content: center;
-  padding: 21.55vh 25vw;
-  justify-content: space-between;
-}
-
-.park-info-structure {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding: 4vh 2.5vw;
-  justify-content: center;
-  border: 1px solid #d6d6d6;
-  border-radius: 15px;
-}
-
-.park-info {
-  color: #d6d6d6;
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
 footer {
   color: #d6d6d6;
   background-color: #001d3d;
@@ -435,4 +387,4 @@ footer {
   padding: 5vh 0;
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css1.map */

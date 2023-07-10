@@ -52,7 +52,7 @@ function createCustomer() {
     $.ajax({
         type: "POST",
         url: "../functions/customersFunction.php",
-        data: $(form).serialize() + "&func=create",
+        data: $('form').serialize() + "&func=create",
         success: (response) => {
             console.log(response);
             console.log("Sending data");

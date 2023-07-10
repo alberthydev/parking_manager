@@ -51,6 +51,8 @@
     function deleteVehicle($conn, $vehicle_id){
         $stmt = $conn->prepare("DELETE FROM vehicles WHERE Vehicle_ID = ?");
         $stmt->bind_param("?", $vehicle_id);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            echo "Error deleting record: ". $conn->error;
+        }
     }
 ?>

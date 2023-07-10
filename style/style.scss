@@ -12,7 +12,7 @@ $table: #d6d6d6;
 .nav-menu{
   background-color: #001d3d;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .logo{
@@ -32,23 +32,50 @@ $table: #d6d6d6;
 
 .vehicles-parked{
   display: flex;
-  align-content: center2;
-  padding: 5vh 3vw;
+  align-content: center;
+  padding: 7vh 3vw 0 3vw;
+  justify-content: space-around;
+}
+
+.information{
+  display: flex;
+  align-content: center;
+  padding: 7vh 3vw 0 3vw;
   justify-content: space-around;
 }
 
 .vp-structure{
   border-radius: 1.5rem;
   background-color: #fdf8e1;
-  padding: 5%;
+  padding: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-structure{
+  border-radius: 1.5rem;
+  background-color: #fdf8e1;
+  padding: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .vp-structure h1{
   text-align: center;
 }
 
-.index-vehicle-table{
-  margin: 0 15px;
+.info-structure h1{
+  text-align: center;
+}
+
+.vehicle-table-right{
+  margin-left: 15px;
+}
+
+.vehicle-table-left{
+  margin-right: 15px;
 }
 
 .button-delete{
@@ -99,7 +126,7 @@ button{
   border: none;
   display: inline-block;
   padding: .75rem 1.25rem;
-  border-radius: 10rem;
+  border-radius: 15px;
   text-transform: uppercase;
   font-size: 1rem;
   letter-spacing: .15rem;
@@ -114,7 +141,7 @@ button{
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 10rem;
+    border-radius: 15px;
     z-index: -2;
   }
   &:before {
@@ -125,7 +152,7 @@ button{
     width: 0%;
     height: 100%;
     transition: all .3s;
-    border-radius: 10rem;
+    border-radius: 15px;
     z-index: -1;
   }
   &:hover {
@@ -135,9 +162,13 @@ button{
   }
 }
 
+button a{
+  color: #000814;
+}
+
 a{
   text-decoration: none;
-  color: #000814;
+  color: #d6d6d6;
 }
 
 h2 {
@@ -165,7 +196,7 @@ table{
 }
 
 .fixo{
-  height: 300px;
+  height: 225px;
 }
 
 th{
@@ -176,6 +207,26 @@ th{
   color: $table;
   text-transform: uppercase;
 }
+
+.row-small-font{
+  font-size: 0.9rem;
+}
+
+.info-bt{
+  padding: .75rem .5rem;
+  border-radius: 10px;
+  color: #d6d6d6;
+  &:after{
+    border-radius: 4px;
+  }
+  &:before{
+    border-radius: 4px;
+  }
+  &:hover {
+    color: #d6d6d6;
+  }
+}
+
 td{
   padding: 15px;
   text-align: center;
@@ -187,13 +238,59 @@ td{
   border-left: solid 1px $table;
 }
 
+#form{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 100%;
+  width: 45vw;
+}
+
+#form label{
+  color: #d6d6d6;
+  margin-bottom: 0.5rem;
+}
+
+#form input{
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#form button{
+  margin-top: 2vh;
+}
+
+.create-edit-text-structure{
+  border-radius: 1.5rem;
+  background-color: #fdf8e1;
+  padding: 5vw;
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-edit-structure{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding: 5vh 10vw;
+}
+
+.information{
+  padding: 15vh 2.5vw;
+}
+
+.info-button{
+  font-weight: 600;
+  padding: 8% 20%;
+  margin-top: 2vh;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 body{
   font-family: 'Roboto', sans-serif;
   background-color: #000814;
-}
-section{
-  margin: 50px;
 }
 
 /* for custom scrollbar for webkit browser*/
@@ -214,17 +311,138 @@ section{
   grid-gap: 10px;
   padding: 0;
 }
-.grid-item {
+
+.grid-container-right {
+  margin-right: 15px;
+}
+
+.grid-container-left{
+  margin-left: 15px;
+}
+
+.grid-parking-create{
+  padding: 3vw;
+  display: flex;
+}
+
+.grid-parking-buttons{
+  margin-top: 3vh;
+}
+
+.grid-item{
+  cursor: pointer;
   background-color: #ddd;
-  padding: 5vh 5.6vw;
+  padding: 15% 5.6vw;
   text-align: center;
   border-radius: 1rem;
-  
+  display: inline-block;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    z-index: -2;
+  }
+  &:before {
+    content: '';
+    background-color: darken($bt-color-system, 15%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    transition: all .3s;
+    border-radius: 1rem;
+    z-index: -1;
+  }
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+.dont-has-vehicle{
+  &:after{
+    background-color: $bt-color-pay;
+  }
+  &:hover {
+    &:before{
+      width: 100%;
+    }
+  }
+}
+
+.has-vehicle{
+  &:after{
+    background-color: $bt-color-exclude;
+  }
+  &:hover {
+    &:before{
+      width: 100%;
+    }
+  }
 }
 
 .park-button{
-  margin: 4vh 3vw;
-  margin-bottom: 10vh;
+  font-weight: 600;
+  border-radius: 1rem;
+  padding: 5% 42.5%;
+  margin-top: 2vh;
+  &:after{
+    border-radius: 1rem;
+  }
+  &:before{
+    border-radius: 1rem;
+  }
+}
+
+.park-create-button{
+  font-weight: 600;
+  border-radius: 1rem;
+  padding: 5% 35%;
+  &:after{
+    font-weight: 600;
+    border-radius: 1rem;
+  }
+  &:before{
+    font-weight: 600;
+    border-radius: 1rem;
+  }
+}
+
+#delete-parking{
+  color: #fff;
+}
+
+.parking{
+  display: flex;
+  align-content: center;
+  padding: 21.55vh 25vw;
+  justify-content: space-between;
+}
+
+.park-info-structure{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 4vh 2.5vw;
+  justify-content: center;
+  border: 1px solid #d6d6d6;
+  border-radius: 15px;
+}
+
+.park-info{
+  color: #d6d6d6;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 footer{

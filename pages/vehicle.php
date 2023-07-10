@@ -3,17 +3,30 @@
     require "../structure/header.php";
     include_once "../connection/connection.php";
 ?>
-
-    <h1>Vehicles Page</h1>
+<nav class="nav-menu">
+    <img src="../img/logo.png" alt="logo PM - Parking Manager" class="logo">
+    <div class="nav-buttons">
+    <button class="button-system"><a href="index.php" style="text-decoration: none; color: black;">Back</a></button>
+    </div>
+</nav>
+<div class="information">
     <div>
+        <div class="info-structure">
+            <h1>Vehicles Page</h1>
+        </div>
+        <button class="button-system info-button"><a href="vehicleCreate.php" style="text-decoration: none; color: black;">Create Vehicle</a></button>
+    </div>
+    <div class="vehicle-table-right">
         <div class="tbl-header">
             <table>
-            <thead>
-                <th><strong>#</strong></th>
-                <th><strong>Nome</strong></th>
-                <th><strong>Plate</strong></th>
-                <th><strong>Registration Date</strong></th>
-                <th><strong>Customer</strong></th>
+                <thead>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>License Plate</th>
+                    <th>Registration Date</th>
+                    <th>Customer</th>
+                    <th></th>
+                    <th></th>
                 </thead>
             </table>
         </div>
@@ -33,10 +46,10 @@
                             echo "  <td>". $row_vehicle['Vehicle_Plate']. "</td>";
                             echo "  <td>". $row_vehicle['Vehicle_Registration_Date']. "</td>";
                             echo "  <td>". $row_vehicle['Customer_Name']. "</td>";
-                            echo "  <td><button class='button-pay'><a href='vehicleEdit.php?Vehicle_ID=" . $row_vehicle['Vehicle_ID'] . 
-                                            "' style='text-decoration: none; color: black;'>Editar</a></button></td>";
-                            echo '  <td><button class="button-delete"><a href="'.$_SERVER["PHP_SELF"].'?Vehicle_ID='.$row_vehicle["Vehicle_ID"].
-                            '&del=true" style="text-decoration: none; color: black;">Excluir</a></button></td>';
+                            echo "  <td><button class='button-pay info-bt'><a href='vehicleEdit.php?Vehicle_ID=" . $row_vehicle['Vehicle_ID'] . 
+                                            "'>Edit</a></button></td>";
+                            echo '  <td><button class="button-delete info-bt"><a href="'.$_SERVER["PHP_SELF"].'?Vehicle_ID='.$row_vehicle["Vehicle_ID"].
+                            '&del=true">Delete</a></button></td>';
                             echo "</tr>";
                         }
                     }else{
@@ -57,15 +70,14 @@
             </table>
         </div>
     </div>
-    <script>
-        let numRowsTable = <?php echo $num_rows;?>;
-        if(numRowsTable>=4){
-            table.classList.add('fixo');
-        }else{
-            table.classList.remove('fixo');
-        }
-    </script>
-    <button class="button-system"><a href="vehicleCreate.php" style="text-decoration: none; color: black;">Create Vehicle</a></button>
-    <button class="button-system"><a href="index.php" style="text-decoration: none; color: black;">Back</a></button>
-    
+</div>
+<script>
+    let table = document.querySelector('.tbl-content');
+    let numRowsTable = <?php echo $num_rows;?>;
+    if(numRowsTable>=4){
+        table.classList.add('fixo');
+    }else{
+        table.classList.remove('fixo');
+    }
+</script> 
 <?php require "../structure/footer.php"?>

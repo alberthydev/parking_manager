@@ -2,12 +2,23 @@
     require "../structure/header.php";
     include_once "../connection/connection.php";    
 ?>
-    <h1>New Vehicle</h1>
+<nav class="nav-menu">
+    <img src="../img/logo.png" alt="logo PM - Parking Manager" class="logo">
+    <div class="nav-buttons">
+        <button class="button-system"><a href="vehicle.php" style="text-decoration: none; color: black;">Back</a></button>
+    </div>
+</nav>
+<div class="create-edit-structure">
+    <div>
+        <div class="create-edit-text-structure">
+                <h1>New Vehicle</h1>
+        </div>
+    </div>
     <div id="formulario">
         <form method="POST" id="form" onsubmit="createVehicle()" action="vehicle.php">
-            <label for="desc">Nome:</label>
+            <label for="desc">Name:</label>
             <input type="text" id="desc" name="desc" required>
-            <label for="plate">Placa:</label>
+            <label for="plate">License Plate:</label>
             <input type="text" id="plate" name="plate" required>
             <div>
                 <div class="tbl-header">
@@ -38,17 +49,18 @@
                     </table>
                 </div>
             </div>
-            <script>
-                let numRowsTable = <?php echo $num_rows;?>;
-                if(numRowsTable>=4){
-                    table.classList.add('fixo');
-                }else{
-                    table.classList.remove('fixo');
-                }
-            </script>
-            <button class="button-pay"><a href="customerCreate.php" style="text-decoration: none; color: black;">Add</a></button>
             <button type="submit" class="button-system">Create Vehicle</button>
         </form>
-        <button class="button-system"><a href="vehicle.php" style="text-decoration: none; color: black;">Back</a></button>
     </div>
+</div>
+
+<script>
+    let table = document.querySelector('.tbl-content');
+    let numRowsTable = <?php echo $num_rows;?>;
+    if(numRowsTable>=4){
+        table.classList.add('fixo');
+    }else{
+        table.classList.remove('fixo');
+    }
+</script>
 <?php require "../structure/footer.php"?>
