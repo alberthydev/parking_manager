@@ -73,7 +73,6 @@
         	        	$stmt->bind_param('i', $del_customer_ID);
         	        	$stmt->execute();
                         echo "<script>window.location.href='customer.php';</script>";
-        	        	exit;
         	        }
                 ?>
                 </tbody>

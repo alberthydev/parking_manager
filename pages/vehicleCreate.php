@@ -41,15 +41,24 @@
                                         echo "  <td><input type='radio' name='customer_id' value=".$row_customer['Customer_ID']." required></td>";
                                         echo "  <td>". $row_customer['Customer_Name']. "</td>";
                                     }
+                                    echo "</tbody>";
+                                    echo "</table>";
+                                    echo "</div>";
+                                    echo "</div>";
+                                    echo "<button type='submit' class='button-system'>Create Vehicle</button>";
                                 }else{
                                     echo "<tr><td>No customers registred</td></tr>";
+                                    echo "</tbody>";
+                                    echo "</table>";
+                                    echo "</div>";
+                                    echo "</div>";
+                                    echo "<button type='button' onclick='alertWindow()' type class='button-system'>Create Vehicle</button>";
                                 }
                             ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <button type="submit" class="button-system">Create Vehicle</button>
         </form>
     </div>
 </div>
@@ -61,6 +70,10 @@
         table.classList.add('fixo');
     }else{
         table.classList.remove('fixo');
+    }
+
+    function alertWindow(){
+        alert("Select a customer");
     }
 </script>
 <?php require "../structure/footer.php"?>

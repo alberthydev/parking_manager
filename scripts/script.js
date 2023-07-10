@@ -4,7 +4,7 @@ $(window).on("load resize ", function() {
 }).resize();
 
 function park(customer, space){
-    if (space != null) {
+    if (customer!=null && space != null) {
         $.ajax({
             type: "POST",
             url: "../functions/parkingFunction.php",
@@ -21,7 +21,7 @@ function park(customer, space){
             }
         })
       } else {
-        alert("Choose a parking space please");
+        alert("Error, verify the available options");
         window.location.href = "parkingCreate.php";
       }      
     
